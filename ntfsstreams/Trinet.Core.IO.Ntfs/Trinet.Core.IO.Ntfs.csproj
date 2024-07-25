@@ -78,10 +78,6 @@
 		<None Remove="_ReSharper.Trinet.Core.IO.Ntfs\**" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Properties\" />
-	</ItemGroup>
-
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
 		<DefineConstants>NETCORE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
 	</PropertyGroup>
