@@ -40,35 +40,35 @@ namespace Trinet.Core.IO.Ntfs
 		/// <summary>
 		/// Security data.
 		/// </summary>
-		SecurityData = 3,
+		SecurityData = 4,
 		/// <summary>
 		/// Alternate data stream.
 		/// </summary>
-		AlternateDataStream = 4,
+		AlternateDataStream = 8,
 		/// <summary>
 		/// Hard link information.
 		/// </summary>
-		Link = 5,
+		Link = 16,
 		/// <summary>
 		/// Property data.
 		/// </summary>
-		PropertyData = 6,
+		PropertyData = 32,
 		/// <summary>
 		/// Object identifiers.
 		/// </summary>
-		ObjectId = 7,
+		ObjectId = 64,
 		/// <summary>
 		/// Reparse points.
 		/// </summary>
-		ReparseData = 8,
+		ReparseData = 128,
 		/// <summary>
 		/// Sparse file.
 		/// </summary>
-		SparseBlock = 9,
+		SparseBlock = 256,
 		/// <summary>
 		/// Transactional data.
 		/// (Undocumented - BACKUP_TXFS_DATA)
 		/// </summary>
-		TransactionData = 10,
+		TransactionData = 512,
 	}
 }
