@@ -22,6 +22,10 @@ jobs:
       - uses: actions/checkout@main
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
+      - name: Setup Nuget
+        uses: nuget/setup-nuget@v1
+      - name: Restore nuget packages
+        run: nuget restore ${{ env.NTFSStreamsSolutionFile }}
       - name: Build solution
         run: msbuild -t:build -property:Configuration=Release /p:TargetFrameworkVersion=v4.8 ${{ env.NTFSStreamsSolutionFile }}
       - name: Upload dll file to artifact repository
