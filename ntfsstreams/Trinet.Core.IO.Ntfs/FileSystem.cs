@@ -59,7 +59,7 @@ namespace Trinet.Core.IO.Ntfs
 		public static IList<AlternateDataStreamInfo> ListAlternateDataStreams(this FileSystemInfo file)
 		{
 			if (null == file) throw new ArgumentNullException(nameof(file));
-			if (!file.Exists) throw new FileNotFoundException(null, file.FullName);
+			if (!file.Exists) throw new FileNotFoundException($"File not found in {System.Reflection.MethodInfo.GetCurrentMethod().Name} method.", file.FullName);
 
 			string path = file.FullName;
 
@@ -100,7 +100,7 @@ namespace Trinet.Core.IO.Ntfs
 		public static IList<AlternateDataStreamInfo> ListAlternateDataStreams(string filePath)
 		{
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException(nameof(filePath));
-			if (!SafeNativeMethods.FileExists(filePath)) throw new FileNotFoundException(null, filePath);
+			if (!SafeNativeMethods.FileExists(filePath)) throw new FileNotFoundException($"File not found in {System.Reflection.MethodInfo.GetCurrentMethod().Name} method.", filePath);
 
 #if NET35
 			new FileIOPermission(FileIOPermissionAccess.Read, filePath).Demand();
@@ -220,7 +220,7 @@ namespace Trinet.Core.IO.Ntfs
 		public static AlternateDataStreamInfo GetAlternateDataStream(this FileSystemInfo file, string streamName, FileMode mode)
 		{
 			if (null == file) throw new ArgumentNullException(nameof(file));
-			if (!file.Exists) throw new FileNotFoundException(null, file.FullName);
+			if (!file.Exists) throw new FileNotFoundException($"File not found in {System.Reflection.MethodInfo.GetCurrentMethod().Name} method.", file.FullName);
 			SafeNativeMethods.ValidateStreamName(streamName);
 
 			if (FileMode.Truncate == mode || FileMode.Append == mode)
@@ -324,7 +324,7 @@ namespace Trinet.Core.IO.Ntfs
 		public static AlternateDataStreamInfo GetAlternateDataStream(string filePath, string streamName, FileMode mode)
 		{
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException(nameof(filePath));
-			if (!SafeNativeMethods.FileExists(filePath)) throw new FileNotFoundException(null, filePath);
+			if (!SafeNativeMethods.FileExists(filePath)) throw new FileNotFoundException($"File not found in {System.Reflection.MethodInfo.GetCurrentMethod().Name} method.", filePath);
 			SafeNativeMethods.ValidateStreamName(streamName);
 
 			if (FileMode.Truncate == mode || FileMode.Append == mode)

@@ -206,8 +206,8 @@ namespace Trinet.Core.IO.Ntfs
 				}
 				case 2: // File not found
 				{
-					if (string.IsNullOrEmpty(path)) throw new FileNotFoundException();
-					throw new FileNotFoundException(null, path);
+					if (string.IsNullOrEmpty(path)) throw new FileNotFoundException($"File path given is null or empty {System.Reflection.MethodInfo.GetCurrentMethod().Name} method.");
+					throw new FileNotFoundException($"File not found in {System.Reflection.MethodInfo.GetCurrentMethod().Name} method.", path);
 				}
 				case 3: // Directory not found
 				{
